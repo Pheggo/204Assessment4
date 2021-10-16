@@ -137,7 +137,7 @@ public class Patron implements Serializable, IPatron {
 	
 	@Override
 	public void incurFine(double fine) {
-		finesPayable += fine;
+		finesPayable = fine;
 	}
 
 	
