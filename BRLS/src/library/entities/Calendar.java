@@ -7,7 +7,6 @@ public class Calendar implements ICalendar {
 
 	private static ICalendar self;
 	private static java.util.Calendar calendar;
-	private static final long MILLIS_PER_DAY = 86400000L;
 
 	private Calendar() {
 		calendar = java.util.Calendar.getInstance();
@@ -63,7 +62,7 @@ public class Calendar implements ICalendar {
 	@Override
 	public synchronized long getDaysDifference(Date targetDate) {
 		long diffMilliseconds = getDate().getTime() - targetDate.getTime();
-		long diffDays = diffMilliseconds / MILLIS_PER_DAY;
+		long diffDays = TimeUnit.DAYS.convert(diffMilliseconds, TimeUnit.MILLISECONDS);
 		return diffDays;
 	}
 
